@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface LukasakovaAmbulanceWlList {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +24,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLLukasakovaAmbulanceWlListElement extends Components.LukasakovaAmbulanceWlList, HTMLStencilElement {
+    }
+    var HTMLLukasakovaAmbulanceWlListElement: {
+        prototype: HTMLLukasakovaAmbulanceWlListElement;
+        new (): HTMLLukasakovaAmbulanceWlListElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +37,13 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "lukasakova-ambulance-wl-list": HTMLLukasakovaAmbulanceWlListElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface LukasakovaAmbulanceWlList {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -47,15 +58,24 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+
+    interface MyComponentAttributes {
+        "first": string;
+        "middle": string;
+        "last": string;
+    }
+
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "lukasakova-ambulance-wl-list": LukasakovaAmbulanceWlList;
+        "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "lukasakova-ambulance-wl-list": LocalJSX.IntrinsicElements["lukasakova-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLLukasakovaAmbulanceWlListElement>;
+            "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }
