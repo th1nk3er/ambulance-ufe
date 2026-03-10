@@ -55,8 +55,8 @@ export class LukasakovaAmbulanceWlApp {
       ? <lukasakova-ambulance-wl-editor entry-id={entryId}
           oneditor-closed={ () => navigate("./list")} >
         </lukasakova-ambulance-wl-editor>
-      : <lukasakova-ambulance-wl-list>
-          onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) }
+      : <lukasakova-ambulance-wl-list
+          onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) }>
       </lukasakova-ambulance-wl-list>
       }
 
