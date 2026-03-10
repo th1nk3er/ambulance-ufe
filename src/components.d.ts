@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface LukasakovaAmbulanceWlApp {
+        "ambulanceId": string;
+        "apiBase": string;
         /**
           * @default ""
          */
@@ -16,6 +18,8 @@ export namespace Components {
         "entryId": string;
     }
     interface LukasakovaAmbulanceWlList {
+        "ambulanceId": string;
+        "apiBase": string;
     }
     interface MyComponent {
         /**
@@ -96,6 +100,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface LukasakovaAmbulanceWlApp {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         /**
           * @default ""
          */
@@ -106,6 +112,8 @@ declare namespace LocalJSX {
         "onEditor-closed"?: (event: LukasakovaAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface LukasakovaAmbulanceWlList {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         "onEntry-clicked"?: (event: LukasakovaAmbulanceWlListCustomEvent<string>) => void;
     }
     interface MyComponent {
@@ -125,9 +133,15 @@ declare namespace LocalJSX {
 
     interface LukasakovaAmbulanceWlAppAttributes {
         "basePath": string;
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface LukasakovaAmbulanceWlEditorAttributes {
         "entryId": string;
+    }
+    interface LukasakovaAmbulanceWlListAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface MyComponentAttributes {
         "first": string;
@@ -138,7 +152,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "lukasakova-ambulance-wl-app": Omit<LukasakovaAmbulanceWlApp, keyof LukasakovaAmbulanceWlAppAttributes> & { [K in keyof LukasakovaAmbulanceWlApp & keyof LukasakovaAmbulanceWlAppAttributes]?: LukasakovaAmbulanceWlApp[K] } & { [K in keyof LukasakovaAmbulanceWlApp & keyof LukasakovaAmbulanceWlAppAttributes as `attr:${K}`]?: LukasakovaAmbulanceWlAppAttributes[K] } & { [K in keyof LukasakovaAmbulanceWlApp & keyof LukasakovaAmbulanceWlAppAttributes as `prop:${K}`]?: LukasakovaAmbulanceWlApp[K] };
         "lukasakova-ambulance-wl-editor": Omit<LukasakovaAmbulanceWlEditor, keyof LukasakovaAmbulanceWlEditorAttributes> & { [K in keyof LukasakovaAmbulanceWlEditor & keyof LukasakovaAmbulanceWlEditorAttributes]?: LukasakovaAmbulanceWlEditor[K] } & { [K in keyof LukasakovaAmbulanceWlEditor & keyof LukasakovaAmbulanceWlEditorAttributes as `attr:${K}`]?: LukasakovaAmbulanceWlEditorAttributes[K] } & { [K in keyof LukasakovaAmbulanceWlEditor & keyof LukasakovaAmbulanceWlEditorAttributes as `prop:${K}`]?: LukasakovaAmbulanceWlEditor[K] };
-        "lukasakova-ambulance-wl-list": LukasakovaAmbulanceWlList;
+        "lukasakova-ambulance-wl-list": Omit<LukasakovaAmbulanceWlList, keyof LukasakovaAmbulanceWlListAttributes> & { [K in keyof LukasakovaAmbulanceWlList & keyof LukasakovaAmbulanceWlListAttributes]?: LukasakovaAmbulanceWlList[K] } & { [K in keyof LukasakovaAmbulanceWlList & keyof LukasakovaAmbulanceWlListAttributes as `attr:${K}`]?: LukasakovaAmbulanceWlListAttributes[K] } & { [K in keyof LukasakovaAmbulanceWlList & keyof LukasakovaAmbulanceWlListAttributes as `prop:${K}`]?: LukasakovaAmbulanceWlList[K] };
         "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
     }
 }
