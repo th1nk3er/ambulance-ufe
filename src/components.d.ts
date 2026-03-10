@@ -6,6 +6,15 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface LukasakovaAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath": string;
+    }
+    interface LukasakovaAmbulanceWlEditor {
+        "entryId": string;
+    }
     interface LukasakovaAmbulanceWlList {
     }
     interface MyComponent {
@@ -23,8 +32,50 @@ export namespace Components {
         "middle": string;
     }
 }
+export interface LukasakovaAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLukasakovaAmbulanceWlEditorElement;
+}
+export interface LukasakovaAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLukasakovaAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLLukasakovaAmbulanceWlAppElement extends Components.LukasakovaAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLLukasakovaAmbulanceWlAppElement: {
+        prototype: HTMLLukasakovaAmbulanceWlAppElement;
+        new (): HTMLLukasakovaAmbulanceWlAppElement;
+    };
+    interface HTMLLukasakovaAmbulanceWlEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLLukasakovaAmbulanceWlEditorElement extends Components.LukasakovaAmbulanceWlEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLukasakovaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLLukasakovaAmbulanceWlEditorElement, ev: LukasakovaAmbulanceWlEditorCustomEvent<HTMLLukasakovaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLukasakovaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLLukasakovaAmbulanceWlEditorElement, ev: LukasakovaAmbulanceWlEditorCustomEvent<HTMLLukasakovaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLukasakovaAmbulanceWlEditorElement: {
+        prototype: HTMLLukasakovaAmbulanceWlEditorElement;
+        new (): HTMLLukasakovaAmbulanceWlEditorElement;
+    };
+    interface HTMLLukasakovaAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLLukasakovaAmbulanceWlListElement extends Components.LukasakovaAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLukasakovaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLLukasakovaAmbulanceWlListElement, ev: LukasakovaAmbulanceWlListCustomEvent<HTMLLukasakovaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLukasakovaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLLukasakovaAmbulanceWlListElement, ev: LukasakovaAmbulanceWlListCustomEvent<HTMLLukasakovaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLLukasakovaAmbulanceWlListElement: {
         prototype: HTMLLukasakovaAmbulanceWlListElement;
@@ -37,12 +88,25 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "lukasakova-ambulance-wl-app": HTMLLukasakovaAmbulanceWlAppElement;
+        "lukasakova-ambulance-wl-editor": HTMLLukasakovaAmbulanceWlEditorElement;
         "lukasakova-ambulance-wl-list": HTMLLukasakovaAmbulanceWlListElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface LukasakovaAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath"?: string;
+    }
+    interface LukasakovaAmbulanceWlEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: LukasakovaAmbulanceWlEditorCustomEvent<string>) => void;
+    }
     interface LukasakovaAmbulanceWlList {
+        "onEntry-clicked"?: (event: LukasakovaAmbulanceWlListCustomEvent<string>) => void;
     }
     interface MyComponent {
         /**
@@ -59,6 +123,12 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
 
+    interface LukasakovaAmbulanceWlAppAttributes {
+        "basePath": string;
+    }
+    interface LukasakovaAmbulanceWlEditorAttributes {
+        "entryId": string;
+    }
     interface MyComponentAttributes {
         "first": string;
         "middle": string;
@@ -66,6 +136,8 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "lukasakova-ambulance-wl-app": Omit<LukasakovaAmbulanceWlApp, keyof LukasakovaAmbulanceWlAppAttributes> & { [K in keyof LukasakovaAmbulanceWlApp & keyof LukasakovaAmbulanceWlAppAttributes]?: LukasakovaAmbulanceWlApp[K] } & { [K in keyof LukasakovaAmbulanceWlApp & keyof LukasakovaAmbulanceWlAppAttributes as `attr:${K}`]?: LukasakovaAmbulanceWlAppAttributes[K] } & { [K in keyof LukasakovaAmbulanceWlApp & keyof LukasakovaAmbulanceWlAppAttributes as `prop:${K}`]?: LukasakovaAmbulanceWlApp[K] };
+        "lukasakova-ambulance-wl-editor": Omit<LukasakovaAmbulanceWlEditor, keyof LukasakovaAmbulanceWlEditorAttributes> & { [K in keyof LukasakovaAmbulanceWlEditor & keyof LukasakovaAmbulanceWlEditorAttributes]?: LukasakovaAmbulanceWlEditor[K] } & { [K in keyof LukasakovaAmbulanceWlEditor & keyof LukasakovaAmbulanceWlEditorAttributes as `attr:${K}`]?: LukasakovaAmbulanceWlEditorAttributes[K] } & { [K in keyof LukasakovaAmbulanceWlEditor & keyof LukasakovaAmbulanceWlEditorAttributes as `prop:${K}`]?: LukasakovaAmbulanceWlEditor[K] };
         "lukasakova-ambulance-wl-list": LukasakovaAmbulanceWlList;
         "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
     }
@@ -74,6 +146,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "lukasakova-ambulance-wl-app": LocalJSX.IntrinsicElements["lukasakova-ambulance-wl-app"] & JSXBase.HTMLAttributes<HTMLLukasakovaAmbulanceWlAppElement>;
+            "lukasakova-ambulance-wl-editor": LocalJSX.IntrinsicElements["lukasakova-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLLukasakovaAmbulanceWlEditorElement>;
             "lukasakova-ambulance-wl-list": LocalJSX.IntrinsicElements["lukasakova-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLLukasakovaAmbulanceWlListElement>;
             "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
