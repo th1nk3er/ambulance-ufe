@@ -7,7 +7,7 @@ import { AmbulanceWaitingListApi, WaitingListEntry, Configuration } from '../../
   shadow: true,
 })
 export class LukasakovaAmbulanceWlList {
-  @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>;
+  @Event({ eventName: "entry-clicked" }) entryClicked: EventEmitter<string>;
   @Prop() apiBase: string;
   @Prop() ambulanceId: string;
   @State() errorMessage: string;
@@ -21,7 +21,7 @@ export class LukasakovaAmbulanceWlList {
       });
 
       const waitingListApi = new AmbulanceWaitingListApi(configuration);
-      const response = await waitingListApi.getWaitingListEntriesRaw({ambulanceId: this.ambulanceId})
+      const response = await waitingListApi.getWaitingListEntriesRaw({ ambulanceId: this.ambulanceId })
       if (response.raw.status < 299) {
         return await response.value();
       } else {
@@ -32,7 +32,7 @@ export class LukasakovaAmbulanceWlList {
     }
     return [];
   }
-  
+
   async componentWillLoad() {
     this.waitingPatients = await this.getWaitingPatientsAsync();
   }
@@ -40,20 +40,24 @@ export class LukasakovaAmbulanceWlList {
   render() {
     return (
       <Host>
-      {this.errorMessage
-        ? <div class="error">{this.errorMessage}</div>
-        :
-      <md-list>
-        {this.waitingPatients.map(patient =>
-          <md-list-item onClick={ () => this.entryClicked.emit(patient.id)} >
-            <div slot="headline">{patient.name}</div>
-            <div slot="supporting-text">{"Predpokladaný vstup: " + patient.estimatedStart?.toLocaleString()}</div>
-            <md-icon slot="start">person</md-icon>
-          </md-list-item>
-        )}
-      </md-list>
-      }
-    </Host>
+        {this.errorMessage
+          ? <div class="error">{this.errorMessage}</div>
+          :
+          <md-list>
+            {this.waitingPatients.map(patient =>
+              <md-list-item onClick={() => this.entryClicked.emit(patient.id)} >
+                <div slot="headline">{patient.name}</div>
+                <div slot="supporting-text">{"Predpokladaný vstup: " + patient.estimatedStart?.toLocaleString()}</div>
+                <md-icon slot="start">person</md-icon>
+              </md-list-item>
+            )}
+          </md-list>
+        }
+        <md-filled-icon-button class="add-button"
+          onclick={() => this.entryClicked.emit("@new")}>
+          <md-icon>add</md-icon>
+        </md-filled-icon-button>
+      </Host>
     );
   }
 }
